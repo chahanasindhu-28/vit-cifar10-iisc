@@ -159,3 +159,26 @@ required to reproduce the experiment in Google Colab.
 ## Summary
 
 This project demonstrates a complete Vision Transformer implementation from scratch for CIFAR-10 classification using PyTorch, including the core Transformer components and a reproducible training and evaluation pipeline.
+
+## Additional Experiment: Overlapping Patches
+
+As an additional experiment, the patch extraction strategy was modified to use overlapping patches. The patch size was kept at **4 × 4**, while the stride was changed from **4 to 2**. All other model and training settings were kept the same.
+
+| Parameter                | Standard ViT | Overlapping-Patch ViT |
+| ------------------------ | -----------: | --------------------: |
+| Patch size               |        4 × 4 |                 4 × 4 |
+| Stride                   |            4 |                     2 |
+| Number of patches        |           64 |                   225 |
+| Tokens including CLS     |           65 |                   226 |
+| Best validation accuracy |       75.08% |            **78.34%** |
+| Test accuracy            |       74.75% |            **77.25%** |
+| Test loss                |            — |            **0.8055** |
+
+The overlapping-patch model achieved a **77.25% test accuracy**, compared with **74.75%** for the standard model, giving an improvement of **2.50 percentage points**.
+
+The best validation accuracy increased from **75.08% to 78.34%**, an improvement of **3.26 percentage points**.
+
+Using a smaller stride causes neighboring patches to overlap and share image regions, providing the model with more local spatial information. However, this increases the number of patches from 64 to 225, resulting in higher computational cost and longer training time.
+
+This experiment demonstrates the trade-off between overlapping patch representations and computational cost.
+
