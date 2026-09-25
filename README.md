@@ -40,37 +40,40 @@ The model is trained and evaluated on **CIFAR-10**, containing 10 image classes.
 The 5,000-image validation set is created from the original CIFAR-10 training set. The official CIFAR-10 test set is reserved for final evaluation.
 
 ## Model Configuration
+## Model Configuration
 
- Parameter                                        Value 
-============                                     =======
- Image size                                       32 × 32 
- Patch size                                         4 × 4 
- Number of patches                                     64 
- Embedding dimension                                  256 
- Transformer blocks                                     6 
- Attention heads                                        8 
- MLP dimension                                        512 
- Dropout                                              0.1 
- Number of classes                                     10 
- CLS token                                      Learnable 
- Positional embedding                           Learnable 
- Attention               Global multi-head self-attention 
+| Parameter | Value |
+|---|---:|
+| Image size | 32 × 32 |
+| Patch size | 4 × 4 |
+| Number of patches | 64 |
+| Embedding dimension | 256 |
+| Transformer blocks | 6 |
+| Attention heads | 8 |
+| MLP dimension | 512 |
+| Dropout | 0.1 |
+| Number of classes | 10 |
+| CLS token | Learnable |
+| Positional embedding | Learnable |
+| Attention | Global multi-head self-attention |
+ 
 
 ## Training Configuration
+## Training Configuration
 
-  Setting                                           Value 
- =============                                     =======
- Optimizer                                           Adam 
- Learning rate                                       3e-4 
- Batch size                                           128 
- Epochs                                                45 
- Loss function                         Cross-Entropy Loss 
- Random seed                                           42 
- GPU                                                   T4 
- Training split                             45,000 images 
- Validation split                            5,000 images 
- Model selection                 Best validation accuracy 
- Approximate training runtime               40–50 minutes 
+| Setting | Value |
+|---|---:|
+| Optimizer | Adam |
+| Learning rate | 3e-4 |
+| Batch size | 128 |
+| Epochs | 45 |
+| Loss function | Cross-Entropy Loss |
+| Random seed | 42 |
+| GPU | T4 |
+| Training split | 45,000 images |
+| Validation split | 5,000 images |
+| Model selection | Best validation accuracy |
+| Approximate training runtime | 40–50 minutes |
 
 ## Implementation Details
 
@@ -109,10 +112,9 @@ The implementation computes the mean and variance and applies learnable scale an
 ## Results
 
 The model achieved the following final test performance:
-
- Model          Test Top-1 Accuracy  
-
- Standard ViT            **74.75%** 
+| Model | Test Top-1 Accuracy |
+|---|---:|
+| Standard ViT | **74.75%** |
 
 The final test evaluation was performed on the official CIFAR-10 test set after selecting the model based on validation accuracy.
 
